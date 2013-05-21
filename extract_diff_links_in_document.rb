@@ -1,8 +1,39 @@
 require 'rdf'
 require 'rdf-agraph'
 
+#find all child of the item. i give the distance between initial call and the current item
+def impactDESC(itemURI,i=0)
+	i+=1
+	if !itemURI.empty?
+		ref = RDF::URI.new(itemURI)
+		@links=REPOSITORY.build_query do |k|
+			k<<[ref, SEMBOX.hasInstance, :item]
+		end.run do |link|
+			print '|'
+			i.times{print '-'}
+			puts 'suppr de '+ itemURI +' impact '+link.item
+			impactDESC(link.item.to_s, i)
+		end
+	end
+end
 
-URL_REPOSITORY="http://sembox:12!sembox@ec2-54-214-66-157.us-west-2.compute.amazonaws.com:10035/repositories/robino"
+#find all parent of the element. i give the distance between initial call and the current item
+def impactASC(itemURI,i=0)
+	i+=1
+	if !itemURI.empty?
+		ref = RDF::URI.new(itemURI)
+		@links=REPOSITORY.build_query do |k|
+			k<<[ref, SEMBOX.isInstanceOf, :item]
+		end.run do |link|
+			print '|'
+			i.times{print '-'}
+			puts 'suppr de '+ itemURI +' impact '+link.item
+			impactASC(link.item.to_s, i=0)
+		end
+	end
+end
+
+URL_REPOSITORY="http://sembox:12!sembox@volume458.allegrograph.net:10035/repositories/test"
 REPOSITORY=RDF::AllegroGraph::Repository.new(URL_REPOSITORY, :create => false)
 
 #Fixation des schemas utilisés comme PREFIX
@@ -55,7 +86,6 @@ end
 liste_comparaison=liste_items_V20 & liste_items_V10
 puts 'Liste des items communs a V2.0 et V1.0'
 liste_comparaison.each do |q| puts 'Communs'+' '+q.to_s end
-
 #Liste des nouveaux items en V2.0 par rapport à la V1.0
 liste_comparaison=liste_items_V20 - liste_items_V10
 puts 'Liste des nouveaux items en V2.0 par rapport a la V1.0'
@@ -65,4 +95,17 @@ liste_comparaison=liste_items_V10 - liste_items_V20
 puts 'Liste des items supprimes en V2.0 par rapport a la V1.0'
 liste_comparaison.each do |q| puts 'Supprimes'+' '+q.to_s end
 
+#Liste les impacts de supression sur les items enfants 
+puts '---------Child---------'
+liste_comparaison.each do |q|
+	impactDESC(q.to_s)
+end
+puts '-----------------------'
+
+#Liste les impacts de supression sur les items parents
+puts '--------Parent---------'
+liste_comparaison.each do |q|
+	impactASC(q.to_s)
+end
+puts '-----------------------'
 
