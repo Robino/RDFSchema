@@ -12,7 +12,7 @@
 	schema:genre "Document";
 	schema:description	"decrit les besoins de la maquette SEM-BOX";
 	sembox:hasInstance <http://sem-box.fr/items/CFG-001>; 
-	sembox:hasInstance <http://sem-box.fr/items/CFG-002>;.
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002>.
 
 
 <http://sem-box.fr/items/CFG-001>
@@ -24,8 +24,9 @@
 	schema:inLanguage "fr";
 	schema:genre "Item";
 	schema:description	"Gestion des Livrables";
-	sembox:instanceOf <http://sem-box.fr/work/CFG1.0>;
-	sembox:hasInstance <http://sem-box.fr/items/CFG-001-001>.
+	sembox:isInstanceOf <http://sem-box.fr/doc/1.0/CFGMaquette>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-001-001>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-001-002>.
 			
 <http://sem-box.fr/items/CFG-002>
 	a schema:Movie;
@@ -35,7 +36,9 @@
 							schema:name "Luc Mazardo"];
 	schema:inLanguage "fr";
 	schema:genre "Item";
-	sembox:instanceOf <http://sem-box.fr/doc/2.0/CFGMaquette> .
+	sembox:isInstanceOf <http://sem-box.fr/doc/2.0/CFGMaquette>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002-001>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002-002>.
 	
 <http://sem-box.fr/items/CFG-001-001>
 	a schema:Book;
@@ -47,7 +50,7 @@
 	schema:inLanguage "fr";
 	schema:genre "Item";
 	schema:description	"Ajout Link/Mise à jour de documents";
-	sembox:instanceOf <http://sem-box.fr/items/CFG-001>.
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-001>.
 
 <http://sem-box.fr/items/CFG-001-002>
 	a schema:Book;
@@ -59,7 +62,7 @@
 	schema:inLanguage "fr";
 	schema:genre "Item";
 	schema:description	"Annotation du document";
-	sembox:instanceOf <http://sem-box.fr/items/CFG-001>.
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-001>.
 
 <http://sem-box.fr/items/CFG-002-001>
 	a schema:Book;
@@ -71,8 +74,54 @@
 	schema:inLanguage "fr";
 	schema:genre "Item";
 	schema:description	"Annotation des items";
-	sembox:instanceOf <http://sem-box.fr/items/CFG-001-001>.
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-002>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002-001-001>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002-001-002>.
 
+
+<http://sem-box.fr/items/CFG-002-001-001>
+	a schema:Book;
+	schema:name "CFG-002-001-001";
+	schema:author [ a schema:Person;
+					schema:name "Romain Sagean"];				
+	schema:inLanguage "fr";
+	schema:genre "Item";
+	schema:description	"Couleurs des Annotation des items";
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-002-001>.
+	
+<http://sem-box.fr/items/CFG-002-001-002>
+	a schema:Book;
+	schema:name "CFG-002-001-002";
+	schema:author [ a schema:Person;
+					schema:name "Romain Sagean"];				
+	schema:inLanguage "fr";
+	schema:genre "Item";
+	schema:description	"Couleurs des Annotation des items";
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-002-001>.
+	
+<http://sem-box.fr/items/CFG-002-002>
+	a schema:Book;
+	schema:name "CFG-002-002";
+	schema:author [ a schema:Person;
+					schema:name "Jean-Luc Agoutborde"];
+	schema:author [ a schema:Person;
+					schema:name "Romain Sagean"];				
+	schema:inLanguage "fr";
+	schema:genre "Item";
+	schema:description	"liens des items";
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-002>;
+	sembox:hasInstance <http://sem-box.fr/items/CFG-002-002-001>.
+	
+		
+<http://sem-box.fr/items/CFG-002-002-001>
+	a schema:Book;
+	schema:name "CFG-002-002-001";
+	schema:author [ a schema:Person;
+					schema:name "Romain Sagean"];				
+	schema:inLanguage "fr";
+	schema:genre "Item";
+	schema:description	"Couleurs des Liens des items";
+	sembox:isInstanceOf <http://sem-box.fr/items/CFG-002-002>.
 
 <http://sem-box.fr/doc/2.0/CFGMaquette> 
 	a schema:CreativeWork;
@@ -85,7 +134,7 @@
 	schema:genre "Document";
 	schema:description	"decrit les besoins de la maquette SEM-BOX";
 	sembox:hasInstance <http://sem-box.fr/items/CFG-001>;
-	sembox:hasInstance <http://sem-box.fr/items/CFG-003>;.
+	sembox:hasInstance <http://sem-box.fr/items/CFG-003>.
 
 <http://sem-box.fr/items/CFG-003>
 	a schema:Book;
@@ -95,4 +144,4 @@
 	schema:inLanguage "fr";
 	schema:genre "Item";
 	schema:description	"Graphe de connaissances";
-	sembox:instanceOf <http://sem-box.fr/doc/2.0/CFGMaquette>.
+	sembox:isInstanceOf <http://sem-box.fr/doc/2.0/CFGMaquette>.
